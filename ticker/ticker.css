@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  /* background-color: rgb(58, 60, 69); */
+  color: #E3E3E3;
+}
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.ticker-wrap {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  background-color: #131317AD;
+  border-bottom: 1px solid #2B2C37B5;
+  padding-left: 100%;
+  box-sizing: content-box;
+  box-shadow: 0 0 8px 1px #2928319C;
+  z-index: 1000;
+  backdrop-filter: invert(10%) blur(1.3px);
+  /* backdrop-filter: invert(10%); */
+}
+
+.ticker-wrap .ticker {
+  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  height: 3em;
+  line-height: 2em;
+  white-space: nowrap;
+  padding-right: 100%;
+  box-sizing: content-box;
+
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: ticker;
+  animation-name: ticker;
+  -webkit-animation-duration: 100s;
+  animation-duration: 100s;
+  color: #FFFFFF;
+}
+
+.ticker-wrap .ticker__item {
+  display: inline-block;
+  padding: 0 1.4em 0 0.5em;
+  font-size: 1em;
+  color: white;
+  /* border-right: 1px solid #2928313B; */
+}
+
+body {
+  padding-bottom: 5em;
+}
+
+h1,
+h2,
+p {
+  padding: 0 5%;
+}
+
+.marquee__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0px;
+  color: #FFFFFF;
+}
+
+.marquee__item>a {
+  color: #FFFFFF;
+}
+
+.marquee__item>* {
+  font-size: 1em;
+}
