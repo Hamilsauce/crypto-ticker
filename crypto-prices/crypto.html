@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="./crypto.css" type="text/css" media="all" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.3.0/rxjs.umd.min.js" integrity="sha512-y3JTS47nnpKORJX8Jn1Rlm+QgRIIZHtu3hWxal0e81avPrqUH48yk+aCi+gprT0RMAcpYa0WCkapxe+bpBHD6g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <div class="app">
+    <div class="countdown">
+      <h4>
+        Time remaining: <span id="remaining"></span>
+      </h4>
+      <div class="countdown-button-container">
+        <button id="pause">
+          Pause Timer
+        </button>
+        <button id="resume">
+          Resume Timer
+        </button>
+      </div>
+    </div>
+    <div class="crypto">
+      <div class="input-group">
+        <label for="input-group--search">Enter a coin</label>
+        <input type="text" name="input-grroup--search" class="input-group--search" id="input-group--search" value="" />
+      </div>
+      <div class="outputs">
+        <div class="name-output">BTC</div>
+        <div class="price-output">$5</div>
+      </div>
+    </div>
+  </div>
+  <!-- <script src="./muto.js" type="module" charset="utf-8"></script> -->
+  <script src="./crypto.js" type="module" charset="utf-8"></script>
+  <!-- <script src="./CoinService.js" type="module" charset="utf-8"></script> -->
+  <script src="./search-input.js" type="module" charset="utf-8"></script>
+</body>
+
+</html>
