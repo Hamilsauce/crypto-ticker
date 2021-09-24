@@ -1,4 +1,5 @@
-import Ticker from './Ticker.js'
+// import Ticker from './Ticker.js'
+import Ticker from './TickerAndItem.js'
 
 const app = document.querySelector('.app');
 const ticker = document.querySelector('.ticker-wrap');
@@ -24,12 +25,13 @@ const fetchCoin = async (url, symbol = '', fileType = 'json') => {
     data = [...data.children[0].children].map(ch => ch.innerHTML.replaceAll('\n', ''))
   } else if (type === 'csv') { console.log('type csv'); }
   coinData = data;
-const appTicker = new Ticker('.ticker-wrap', coinData.data);
   
+  const appTicker = new Ticker('.ticker-wrap', coinData.data);
+
   console.log('cdata', coinData.data);
   // emitNotesLoaded(app, coinData.data)
   emitNotesLoaded(appTicker.element, coinData)
- 
+
   return coinData;
 }
 const emitNotesLoaded = (target, data) => { target.dispatchEvent(new CustomEvent('dataloaded', { bubbles: true, detail: { data } })) };
