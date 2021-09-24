@@ -1,30 +1,43 @@
-import CoinService from './CoinService.js'
-import searchInput$ from './search-input.js'
+// import CoinService from './CoinService.js'
+import CoinServiceRx from '../CoinServiceRx.js'
+// import searchInput$ from './search-input.js'
 const { interval, fromEvent, merge, empty } = rxjs;
 const { switchMap, scan, takeWhile, startWith, map, mapTo } = rxjs.operators;
 const COUNTDOWN_SECONDS = 10;
 
 const app = document.querySelector('.app');
-const coinService = new CoinService();
+// const coinService = new CoinService();
+const coinServiceRx = new CoinServiceRx();
 // console.log('coinService', coinService)
+// console.log('coinServiceRx', coinServiceRx)
 
-searchInput$.pipe(
-  map(({ data }) => {
-    app.querySelector('.name-output').textContent = data.name;
-    app.querySelector('.price-output').textContent = data.ohlc.c;
-    return data
-  })
-).subscribe();
+coinServiceRx.fetch().subscribe(x => console.log('coinrx fetch subsc', x))
 
-app.addEventListener('dataloaded', ({ detail }) => {
-  const nameEl = app.querySelector('.name-output');
-  const priceEl = app.querySelector('.price-output');
-  // nameEl.textContent = Object.values(detail.data)[0].name
-  // priceEl.textContent = Object.values(detail.data)[0].change.value;
-  // nameEl.textContent = detail.data.sym.value
-});
 
-coinService.fetchCoin('', app)
+
+
+// searchInput$.pipe(
+//   map(({ data }) => {
+//     app.querySelector('.name-output').textContent = data.name;
+//     app.querySelector('.price-output').textContent = data.ohlc.c;
+//     return data
+//   })
+// ).subscribe();
+
+// app.addEventListener('dataloaded', ({ detail }) => {
+//   const nameEl = app.querySelector('.name-output');
+//   const priceEl = app.querySelector('.price-output');
+//   // nameEl.textContent = Object.values(detail.data)[0].name
+//   // priceEl.textContent = Object.values(detail.data)[0].change.value;
+//   // nameEl.textContent = detail.data.sym.value
+// });
+
+// coinService.fetchCoin('', app)
+
+
+
+
+
 
 
 // Homemade Recusrive timer

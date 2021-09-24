@@ -65,8 +65,8 @@ export default class {
     return this._data
   }
   set data(newValue) {
-    this._data = Object.entries(newValue.data)
-      .reduce((acc, [key, value]) => [...acc, { ...value }], [])
+    this._data = Object.entries(newValue.data).reduce((acc, [key, value]) => [...acc, { ...value }], [])
+ console.log('this._data', this._data);
   }
 
   get activeItem() {
