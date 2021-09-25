@@ -7,6 +7,7 @@ const COUNTDOWN_SECONDS = 10;
 
 const app = document.querySelector('.app');
 // const coinService = new CoinService();
+import CoinServiceRx from '../CoinServiceRx.js'
 const coinServiceRx = new CoinServiceRx();
 // console.log('coinService', coinService)
 // console.log('coinServiceRx', coinServiceRx)

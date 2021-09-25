@@ -1,6 +1,6 @@
 import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
 // import TickerItem from './TickerItem.js';
-import CoinServiceRx from './00-ticker-bundle/CoinServiceRx.js'
+import CoinServiceRx from '../CoinServiceRx.js'
 const coinServiceRx = new CoinServiceRx();
 ham.help()
 
