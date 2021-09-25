@@ -2,7 +2,7 @@ import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
 // import TickerItem from './TickerItem.js';
 import CoinServiceRx from './00-ticker-bundle/CoinServiceRx.js'
 const coinServiceRx = new CoinServiceRx();
-ham.help()
+// ham.help()
 
 
 // TickerItem
@@ -63,7 +63,6 @@ export default class {
     this.element.addEventListener('dataloaded', this.handleDataLoaded.bind(this));
     // this.coinServiceRx = new CoinServiceRx();
     this.render();
-  console.log('ticker data', this.data);
   }
 
   get data() {
@@ -71,7 +70,7 @@ export default class {
   }
   set data(newValue) {
     this._data = Object.entries(newValue).reduce((acc, [key, value]) => [...acc, { ...value }], [])
-    console.log('this._data', this._data);
+    // console.log('this._data', this._data);
   }
 
   get activeItem() {

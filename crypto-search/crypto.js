@@ -1,29 +1,27 @@
 // import CoinService from './CoinService.js'
-import CoinServiceRx from '../CoinServiceRx.js'
-// import searchInput$ from './search-input.js'
+// import CoinServiceRx from '../CoinServiceRx.js'
+import searchInput$ from './search-input.js'
 const { interval, fromEvent, merge, empty } = rxjs;
-const { switchMap, scan, takeWhile, startWith, map, mapTo } = rxjs.operators;
+const { switchMap, scan, tap, takeWhile, startWith, map, mapTo } = rxjs.operators;
 const COUNTDOWN_SECONDS = 10;
 
 const app = document.querySelector('.app');
 // const coinService = new CoinService();
-import CoinServiceRx from '../CoinServiceRx.js'
-const coinServiceRx = new CoinServiceRx();
+// import CoinServiceRx from '../00-ticker-bundle/CoinServiceRx.js'
+// const coinServiceRx = new CoinServiceRx();
 // console.log('coinService', coinService)
 // console.log('coinServiceRx', coinServiceRx)
 
-coinServiceRx.fetch().subscribe(x => console.log('coinrx fetch subsc', x))
 
 
-
-
-// searchInput$.pipe(
-//   map(({ data }) => {
-//     app.querySelector('.name-output').textContent = data.name;
-//     app.querySelector('.price-output').textContent = data.ohlc.c;
-//     return data
-//   })
-// ).subscribe();
+console.log('ooo');
+searchInput$.pipe(
+  tap(data => {
+    app.querySelector('.name-output').textContent = data.name;
+    app.querySelector('.price-output').textContent = data.ohlc.c;
+    return data
+  })
+).subscribe(x => console.log(x));
 
 // app.addEventListener('dataloaded', ({ detail }) => {
 //   const nameEl = app.querySelector('.name-output');
@@ -50,7 +48,7 @@ const timer1 = (n) => {
     setTimeout(() => timer1(--n), 500)
   }
 };
-timer1(count)
+// timer1(count)
 
 /*
 

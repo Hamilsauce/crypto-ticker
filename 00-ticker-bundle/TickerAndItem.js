@@ -1,6 +1,6 @@
 import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
 // import TickerItem from './TickerItem.js';
-import CoinServiceRx from '../CoinServiceRx.js'
+import CoinServiceRx from './CoinServiceRx.js'
 const coinServiceRx = new CoinServiceRx();
 ham.help()
 
@@ -30,6 +30,7 @@ class TickerItem {
 
     this.element.addEventListener('click', e => {
       this.activeItem = e.detail.target
+      console.log('ticker item clicked', e);
       e.stopImmediatePropagation()
     });
 
@@ -37,10 +38,20 @@ class TickerItem {
     return this.element
   }
 
+  templater(strings, ...tags) {
+    return strings
+      .reduce((output, str, i) => {
+        // console.log(`str: ${str}, tags[${i}]: ${tags[i]}`);
+
+        // console.log(`output pass ${i}: ${[...output, str,tags[i]]}`);
+        return [...output, str, tags[i]].join('')
+      }, '')
+  }
+
   template() {
-    return `
+    return this.templater `
     <div class="marquee__item">
-      <a class="marquee__item__currency-name--link" href="/price/${this.data.iso}/">
+      <a class="marquee__item__currency-name--link" href="https://www.coindesk.com/price/${this.data.slug}/">
        <span class="marquee__item__currency-name--text">${this.data.iso}</span>
       </a>
       <div class="price-wrapper ${String(this.data.change.percent).startsWith('-') ? 'negative' : 'positive'}-price-change">
@@ -60,65 +71,35 @@ export default class {
     this.data = coinData
     this._activeItem;
     this._tickerItems;
-    this.element.addEventListener('dataloaded', this.handleDataLoaded.bind(this));
-    // this.coinServiceRx = new CoinServiceRx();
+
     this.render();
-  console.log('ticker data', this.data);
   }
 
-  get data() {
-    return this._data
-  }
+  get data() { return this._data }
   set data(newValue) {
     this._data = Object.entries(newValue).reduce((acc, [key, value]) => [...acc, { ...value }], [])
-    console.log('this._data', this._data);
+    // console.log('this._data', this._data);
   }
 
-  get activeItem() {
-    return this._activeItem
-  }
-  set activeItem(newValue) {
-    this._activeItem = newValue
-  }
+  get activeItem() { return this._activeItem }
+  set activeItem(newValue) { this._activeItem = newValu }
 
-  get tickerItems() {
-    return this._tickerItems
-  }
-  set tickerItems(newValue) {
-    this._tickerItems = newValue
-  }
+  get tickerItems() { return this._tickerItems }
+  set tickerItems(newValue) { this._tickerItems = newValue }
 
   render() {
-    const parent = this.element.parentElement
-    // this.element.parentElement.removeChild(this.element);
-    // this.element.classList.remove('ticker');
+    const wrapper = this.element.parentElement
+    ham.DOM.removeAllChildren(this.element)
 
-    // ham.DOM.removeAllChildren(this.element)
-
-    this.data.forEach((coin, i) => {
+    this.data.forEach(coin => {
       this.element.appendChild(new TickerItem(coin).render())
     });
 
     this.element.addEventListener('click', e => {
       this.activeItem = e.detail.target
+      console.log('ticker clicked', e);
       e.stopImmediatePropagation()
     });
-
-    parent.classList.toggle('ticker-wrapper')
-    parent.appendChild(this.element);
-    this.element.classList.add('ticker');
-    parent.classList.toggle('ticker-wrapper')
     return this.element;
-  }
-
-  handleDataLoaded(e) {
-    this.data = e.detail.data
-  }
-
-  template() {
-    return `
- 
-      <div class="ticker" data-loaded=${true}></div>
-    `;
   }
 }
