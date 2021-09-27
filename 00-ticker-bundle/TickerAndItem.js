@@ -61,8 +61,7 @@ class Ticker {
 
   get data() { return this._data }
   set data(newValue) {
-    this._data = Object.entries(newValue).reduce((acc, [key, value]) => [...acc, { ...value }], [])
-    // console.log('this._data', this._data);
+    this._data = ham.arrayFromObjectProperties(newValue)
   }
 
   get activeItem() { return this._activeItem }
@@ -89,5 +88,6 @@ class Ticker {
 }
 
 export default (data$) => {
-  return data$.pipe(map(data => new Ticker('.ticker-wrap', data)))
+  return data$.pipe(
+    map(data => new Ticker('.ticker-wrap', data)))
 }
