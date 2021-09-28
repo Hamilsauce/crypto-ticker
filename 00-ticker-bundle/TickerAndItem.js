@@ -1,5 +1,4 @@
 import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
-
 const { map } = rxjs.operators;
 
 // TickerItem
@@ -18,15 +17,14 @@ class TickerItem {
     this.element.innerHTML = this.template()
     this.element.addEventListener('click', e => { this.activeItem = e.detail.target });
     this.element.classList.add('ticker__item');
-  
+
     return this.element
   }
 
   templater(strings, ...tags) {
-    return strings
-      .reduce((output, str, i) => {
-        return [...output, str, tags[i]].join('')
-      }, '')
+    return strings.reduce((output, str, i) => {
+      return [...output, str, tags[i]].join('')
+    }, '')
   }
 
   template() {
@@ -67,7 +65,6 @@ class Ticker {
   render() {
     const wrapper = this.element.parentElement
     ham.DOM.removeAllChildren(this.element)
-
     this.data.forEach(coin => {
       this.element.appendChild(new TickerItem(coin).render())
     });
@@ -76,12 +73,9 @@ class Ticker {
       this.activeItem = e.detail.target
       e.stopImmediatePropagation()
     });
-    
+
     return this.element;
   }
 }
 
-export default (data$) => {
-  return data$.pipe(
-    map(data => new Ticker('.ticker-wrap', data)))
-}
+export default (data$) => { return data$.pipe(map(data => new Ticker('.ticker-wrap', data))) }
