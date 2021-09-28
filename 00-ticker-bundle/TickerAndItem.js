@@ -16,13 +16,9 @@ class TickerItem {
 
   render() {
     this.element.innerHTML = this.template()
-
-    this.element.addEventListener('click', e => {
-      this.activeItem = e.detail.target
-      console.log('ticker item clicked', e);
-    });
-
+    this.element.addEventListener('click', e => { this.activeItem = e.detail.target });
     this.element.classList.add('ticker__item');
+  
     return this.element
   }
 
@@ -60,9 +56,7 @@ class Ticker {
   }
 
   get data() { return this._data }
-  set data(newValue) {
-    this._data = ham.arrayFromObjectProperties(newValue)
-  }
+  set data(newValue) { this._data = ham.arrayFromObjectProperties(newValue) }
 
   get activeItem() { return this._activeItem }
   set activeItem(newValue) { this._activeItem = newValue }
@@ -80,9 +74,9 @@ class Ticker {
 
     this.element.addEventListener('click', e => {
       this.activeItem = e.detail.target
-      console.log('ticker clicked', e);
       e.stopImmediatePropagation()
     });
+    
     return this.element;
   }
 }
