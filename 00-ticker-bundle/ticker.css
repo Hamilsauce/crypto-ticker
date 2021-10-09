@@ -17,7 +17,7 @@
   overflow: hidden;
 }
 
-.ticker-wrap .ticker {
+.ticker {
   display: inline-block;
   display: flex;
   flex-direction: row;
@@ -29,16 +29,17 @@
   color: #FFFFFF;
   white-space: nowrap;
   padding-right: 100%;
-  box-sizing: content-box;
-
+  box-sizing: border-box;
+}
+.animate {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
   -webkit-animation-name: ticker;
   animation-name: ticker;
-  -webkit-animation-duration: 100s;
-  animation-duration: 100s;
+  -webkit-animation-duration: 90s;
+  animation-duration: 90s;
 }
 
 .ticker-wrap .ticker__item {

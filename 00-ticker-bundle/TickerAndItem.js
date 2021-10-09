@@ -1,24 +1,33 @@
 import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
 const { map } = rxjs.operators;
-
+ham.help()
 // TickerItem
 class TickerItem {
   constructor(data) {
-    this.element = document.createElement('div');
     this.data = data;
-    this._isActive = false;
     this.currencyFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+    this._isActive = false;
+
+    this.element = ham.DOM.newElement('div', {
+      classList: ['ticker__item']
+    }, [], this.template());
+    this.element.addEventListener('click', this.handleClick.bind(this))
+
+    // document.createElement('div');
+
   }
 
   get isActive() { return this._isActive }
   set isActive(newValue) { this._isActive = newValue }
 
-  render() {
-    this.element.innerHTML = this.template()
-    this.element.addEventListener('click', e => { this.activeItem = e.detail.target });
-    this.element.classList.add('ticker__item');
-
-    return this.element
+  handleClick(e) {
+    // this.t = e.target
+    // e.currentTarget.style.position = 'absolute'
+    // console.log('te.detail.target', this)
+    // e.stopImmediatePropagation()
+    // });
+    // this.element.classList.add('ticker__item');
+    // return this.element
   }
 
   templater(strings, ...tags) {
@@ -51,6 +60,7 @@ class Ticker {
     this._tickerItems;
 
     this.render();
+    this.element.classList.add('animate')
   }
 
   get data() { return this._data }
@@ -63,17 +73,19 @@ class Ticker {
   set tickerItems(newValue) { this._tickerItems = newValue }
 
   render() {
+
     const wrapper = this.element.parentElement
     ham.DOM.removeAllChildren(this.element)
     this.data.forEach(coin => {
-      this.element.appendChild(new TickerItem(coin).render())
+      this.element.appendChild(new TickerItem(coin).element)
     });
 
     this.element.addEventListener('click', e => {
+      this.element.classList.toggle('animate')
       this.activeItem = e.detail.target
-      e.stopImmediatePropagation()
+      // e.stopImmediatePropagation()
+    console.log('    this.element.classList.ad', this.element)
     });
-
     return this.element;
   }
 }
