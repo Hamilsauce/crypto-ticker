@@ -1,6 +1,7 @@
 import ham from 'https://hamilsauce.github.io/hamhelper/hamhelper1.0.0.js';
 const { map } = rxjs.operators;
-ham.help()
+const { help  } = ham;
+// help.help()
 // TickerItem
 class TickerItem {
   constructor(data) {
@@ -11,10 +12,8 @@ class TickerItem {
     this.element = ham.DOM.newElement('div', {
       classList: ['ticker__item']
     }, [], this.template());
+    
     this.element.addEventListener('click', this.handleClick.bind(this))
-
-    // document.createElement('div');
-
   }
 
   get isActive() { return this._isActive }
