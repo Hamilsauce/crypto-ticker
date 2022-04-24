@@ -43,15 +43,15 @@ html {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 18px;
   overflow: hidden;
-  background-color: #131317AD;
+  background-color: #23232BE8;
   border-bottom: 1px solid #2B2C37B5;
   padding-left: 100%;
   box-sizing: content-box;
   box-shadow: 0 0 8px 1px #2928319C;
   z-index: 1000;
-  backdrop-filter: invert(10%) blur(1.3px);
+  backdrop-filter: invert(0%) blur(1.3px);
   /* backdrop-filter: invert(10%); */
 }
 
@@ -61,7 +61,7 @@ html {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 18px;
   height: 3em;
   line-height: 2em;
   white-space: nowrap;
@@ -79,13 +79,13 @@ html {
   color: #FFFFFF;
 }
 
-.ticker-wrap .ticker__item {
+/* .ticker-wrap .ticker__item {
   display: inline-block;
   padding: 0 1.4em 0 0.5em;
   font-size: 1em;
   color: white;
-  /* border-right: 1px solid #2928313B; */
-}
+  border-right: 1px solid #2928313B;
+} */
 
 body {
   padding-bottom: 5em;

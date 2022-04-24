@@ -18,6 +18,8 @@ export default class {
       mergeMap((response) => response.json()),
       map(x => x.data)
     )
+    
+    
   }
 
   getCoinUrl(sym) { return `https://production.api.coindesk.com/v2/tb/price/ticker?assets=${sym}` }

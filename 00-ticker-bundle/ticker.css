@@ -6,13 +6,13 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 18px;
   width: 100%;
   padding-left: 100%;
-  background-color: #131317D4;
+  background-color: #0B0B0B;
   border-bottom: 1px solid #2B2C37B5;
   box-shadow: 0 0 8px 1px #2928319C;
-  backdrop-filter: invert(10%) blur(1.3px);
+  backdrop-filter: invert(0%) blur(1.3px);
   z-index: 1000;
   overflow: hidden;
 }
@@ -54,17 +54,17 @@
 }
 
 .marquee__item a {
-  color: #EBEBEB;
+  color: #F0F0F0;
   font-size: 1em;
   text-decoration: none;
 }
 
 .positive-price-change {
-  color: #37C137;
+  color: #13E213;
 }
 
 .negative-price-change {
-  color: #B61C1C;
+  color: #F50909;
 }
 
 .price-wrapper {
@@ -72,7 +72,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  gap: 8px;
+  gap: 18px;
 }
 
 
